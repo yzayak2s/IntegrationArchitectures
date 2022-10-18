@@ -19,6 +19,7 @@ class HighPerformanceTest {
     /**
      * Attention: You might update the version of the Driver
      * for newer version of MongoDB!
+     * This tests run with MongoDB 4.2.17 Community
      */
     @BeforeEach
     void setUp() {
@@ -31,7 +32,6 @@ class HighPerformanceTest {
 
         // Get Collection 'salesmen' (creates one if not available)
         salesmen = supermongo.getCollection("salesmen");
-
     }
 
     @Test
