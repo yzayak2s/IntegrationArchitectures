@@ -10,13 +10,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 class HighPerformanceTest {
 
     private MongoClient client;
     private MongoDatabase supermongo;
     private MongoCollection<Document> salesmen;
 
+    /**
+     * Attention: You might update the version of the Driver
+     * for newer version of MongoDB!
+     */
     @BeforeEach
     void setUp() {
         // Setting up the connection to a local MongoDB with standard port 27017
