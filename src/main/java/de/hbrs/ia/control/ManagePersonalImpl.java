@@ -2,42 +2,34 @@ package de.hbrs.ia.control;
 
 import com.google.gson.Gson;
 import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-import com.mongodb.ServerAddress;
 
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoCollection;
 
 import org.bson.Document;
-import java.util.Arrays;
-import com.mongodb.Block;
 
 import com.mongodb.client.MongoCursor;
 import static com.mongodb.client.model.Filters.*;
-import com.mongodb.client.result.DeleteResult;
-import static com.mongodb.client.model.Updates.*;
-import com.mongodb.client.result.UpdateResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import de.hbrs.ia.model.EvaluationRecord;
 import de.hbrs.ia.model.SalesMan;
 
-import java.util.List;
-
 public class ManagePersonalImpl implements ManagePersonal{
 
     // Connection to MongoDB Database
     MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
     MongoDatabase database = mongoClient.getDatabase("highperformance");
-    MongoCollection<Document> salesman = database.getCollection("salesman");
+    MongoCollection<Document> salesmen = database.getCollection("salesmen");
     MongoCollection<Document> evaluation_record = database.getCollection("evaluation_record");
 
     // TODO: 25.10.22 Condition if user already exists
     @Override
     public void createSalesMan(SalesMan record) {
 //        Document document = salesman.find(eq("id", record.getId())).first();
-        salesman.insertOne(record.toDocument());
+        salesmen.insertOne(record.toDocument());
     }
 
     @Override
@@ -48,7 +40,7 @@ public class ManagePersonalImpl implements ManagePersonal{
 
     @Override
     public SalesMan readSalesMan(int sid) {
-        Document oneSalesMan = salesman.find(eq("id", sid)).first();
+        Document oneSalesMan = salesmen.find(eq("id", sid)).first();
         Gson gson = new Gson();
         SalesMan salesMan = gson.fromJson(oneSalesMan.toJson(), SalesMan.class);
         return salesMan;
@@ -66,7 +58,7 @@ public class ManagePersonalImpl implements ManagePersonal{
         List<SalesMan> salesManList = new ArrayList<>();
         // TODO: 25.10.22 Provide for find()-method an util-method that customize the query!
         //       Example: gt("i", 50)-method -> "i" > 50 (i is grater than)
-        MongoCursor<Document> cursor = salesman.find().iterator();
+        MongoCursor<Document> cursor = salesmen.find().iterator();
         try {
             while (cursor.hasNext()) {
                 Gson gson = new Gson();
@@ -106,7 +98,7 @@ public class ManagePersonalImpl implements ManagePersonal{
     // TODO: 25.10.22 Implementation follows ...
     @Override
     public void updateSalesMan(int sid, SalesMan updatedSalesMan) {
-        Document checkSalesMan = salesman.find(eq("id", sid)).first();
+        Document checkSalesMan = salesmen.find(eq("id", sid)).first();
 //        SalesMan checkSalesMan = updatedSalesMan.readEvaluationRecords(sid);
         if (!checkSalesMan.isEmpty()) {
 //            salesman.updateOne(eq("id", sid), new Document("$set", new Document("id")))
@@ -120,12 +112,12 @@ public class ManagePersonalImpl implements ManagePersonal{
 
     @Override
     public void deleteSalesMan(int sid) {
-        salesman.deleteOne(eq("id", sid));
+        salesmen.deleteOne(eq("id", sid));
     }
 
     @Override
     public void deleteAllSalesMan() {
-        salesman.deleteMany(new Document());
+        salesmen.deleteMany(new Document());
     }
 
     @Override
