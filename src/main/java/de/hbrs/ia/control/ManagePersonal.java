@@ -15,7 +15,7 @@ public interface ManagePersonal {
 
     public List<SalesMan> querySalesMan(String attribute , String key );
 
-    public EvaluationRecord readEvaluationRecords( int sid );
+    public EvaluationRecord readEvaluationRecord(int sid );
     public List<EvaluationRecord> queryEvaluationRecords( int sid );
     public void updateSalesMan(int sid, SalesMan updatedSalesMan);
     public void updateEvaluationRecord(int goalID, EvaluationRecord updatedRecord);
