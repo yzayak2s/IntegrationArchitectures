@@ -16,7 +16,6 @@ public class CommandHandler {
         HashMap<String, Command> commandsMap = new HashMap();
         commandsMap.put("help", new HelpCommand());
         commandsMap.put("exit", new ExitCommand());
-        // TODO: 30.10.22 Needs to be fixed, when salesman already exist
         commandsMap.put("create", new CreateCommand(parameterArray));
         commandsMap.put("read", new ReadCommand(parameterArray));
         commandsMap.put("delete", new DeleteCommand(parameterArray));

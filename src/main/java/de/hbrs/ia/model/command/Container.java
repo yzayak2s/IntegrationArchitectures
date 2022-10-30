@@ -37,45 +37,6 @@ public class Container {
         evaluationRecordList = new ArrayList<>();
     }
 
-    public void startOutputSalesMen(List<SalesMan> salesManList) {
-        if (salesManList.size() == 0 ) {
-            System.out.println("There are no salesmen yet!");
-        } else {
-            String format = "|%1$-20s|%2$-20s|%3$-20s|%n";
-            System.out.format(format, "ID", "Firstname", "Lastname");
-            System.out.format(format, "====================", "====================", "====================");
-            for (SalesMan salesMan : salesManList) {
-                System.out.format(
-                        format,
-                        salesMan.getId(),
-                        salesMan.getFirstname(),
-                        salesMan.getLastname()
-                );
-            }
-        }
-    }
-
-    public void startOutputEvaluationRecords(List<EvaluationRecord> evaluationRecordList) {
-        if (evaluationRecordList.size() == 0) {
-            System.out.println("There are no evaluation records yet!");
-        } else {
-            String format = "|%1$-20s|%2$-20s|%3$-30s|%4$-20s|%5$-20s||%6$-20s|%n";
-            System.out.format(format, "goalID", "goalDescription", "targetValue", "actualValue", "year", "salesManID");
-            System.out.format(format, "====================", "====================", "==============================", "====================", "====================", "====================");
-            for (EvaluationRecord evaluationRecord : evaluationRecordList) {
-                System.out.format(
-                        format,
-                        evaluationRecord.getGoalID(),
-                        evaluationRecord.getGoalDescription(),
-                        evaluationRecord.getTargetValue(),
-                        evaluationRecord.getActualValue(),
-                        evaluationRecord.getYear(),
-                        evaluationRecord.getSalesManID()
-                );
-            }
-        }
-    }
-
     /**
      * Determination of the number of internal salesman objects.
      * @return
@@ -100,6 +61,11 @@ public class Container {
         return this.evaluationRecordList;
     }
 
+    public List<EvaluationRecord> getEvaluationRecordListBySalesManID(int salesManID) {
+        this.evaluationRecordList = managePersonal.queryEvaluationRecords(salesManID);
+        return this.evaluationRecordList;
+    }
+
     public void setSalesManList(List<SalesMan> salesManList) {
         this.salesManList = salesManList;
     }
@@ -108,7 +74,7 @@ public class Container {
         this.evaluationRecordList = evaluationRecordList;
     }
 
-    public boolean contains(SalesMan salesMan) {
+    public boolean containsSalesMan(SalesMan salesMan) {
         int ID = salesMan.getId();
         for (SalesMan salMan : salesManList) {
             if (salMan.getId() == ID) {
@@ -118,12 +84,31 @@ public class Container {
         return false;
     }
 
+    public boolean containsEvaluationRecord(EvaluationRecord evaluationRecord) {
+        int goalID = evaluationRecord.getGoalID();
+        for (EvaluationRecord evRecord : evaluationRecordList) {
+            if (evRecord.getGoalID() == goalID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addSalesMan (SalesMan salesMan) throws ContainerException {
-        if (contains(salesMan)) {
+        if (containsSalesMan(salesMan)) {
             ContainerException exception = new ContainerException("ID already belongs to a salesman!");
             throw exception;
         }
         managePersonal.createSalesMan(salesMan);
         salesManList.add(salesMan);
+    }
+
+    public void addEvaluationRecord(EvaluationRecord evaluationRecord, int salesManID) throws ContainerException {
+        if (containsEvaluationRecord(evaluationRecord)) {
+            ContainerException exception = new ContainerException("GoalID already belongs to an evaluation record!");
+            throw exception;
+        }
+        managePersonal.addPerformanceRecord(evaluationRecord, salesManID);
+        evaluationRecordList.add(evaluationRecord);
     }
 }

@@ -1,6 +1,7 @@
 package de.hbrs.ia.model.command;
 
 import de.hbrs.ia.control.InputDialog;
+import de.hbrs.ia.model.EvaluationRecord;
 import de.hbrs.ia.model.exception.ContainerException;
 
 import java.text.ParseException;
@@ -23,6 +24,12 @@ public class CreateCommand  implements Command{
                 }
             }
             case "evaluationrecord" -> {
+                try {
+                    EvaluationRecord evaluationRecord = InputDialog.inputDialogCreateEvaluationRecord();
+                    Container.getInstance().addEvaluationRecord(evaluationRecord, evaluationRecord.getSalesManID());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 // TODO: 29.10.22 See above
             }
             default -> System.out.println(
