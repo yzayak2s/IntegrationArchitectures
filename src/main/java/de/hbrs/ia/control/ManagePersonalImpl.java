@@ -72,7 +72,7 @@ public class ManagePersonalImpl implements ManagePersonal{
     }
 
     @Override
-    public EvaluationRecord readEvaluationRecords(int sid) {
+    public EvaluationRecord readEvaluationRecord(int sid) {
         Document oneEvaluationRecord = evaluation_record.find(eq("salesManID", sid)).first();
         Gson gson = new Gson();
         EvaluationRecord evaluationRecord = gson.fromJson(oneEvaluationRecord.toJson(), EvaluationRecord.class);

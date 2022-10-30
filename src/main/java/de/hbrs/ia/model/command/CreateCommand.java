@@ -1,5 +1,6 @@
 package de.hbrs.ia.model.command;
 
+import de.hbrs.ia.control.InputDialog;
 import de.hbrs.ia.model.exception.ContainerException;
 
 import java.text.ParseException;
@@ -16,7 +17,7 @@ public class CreateCommand  implements Command{
         switch (this.parameterArray[1].toLowerCase()) {
             case "salesman" -> {
                 try {
-                    // TODO: 29.10.22 EingabeDialog with addSalesMan()-method
+                    Container.getInstance().addSalesMan(InputDialog.inputDialogCreateSalesMan());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -16,7 +16,10 @@ public class CommandHandler {
         HashMap<String, Command> commandsMap = new HashMap();
         commandsMap.put("help", new HelpCommand());
         commandsMap.put("exit", new ExitCommand());
+        // TODO: 30.10.22 Needs to be fixed, when salesman already exist
         commandsMap.put("create", new CreateCommand(parameterArray));
+        commandsMap.put("read", new ReadCommand(parameterArray));
+        commandsMap.put("delete", new DeleteCommand(parameterArray));
 
         return commandsMap.get(parameterArray[0]);
     }
@@ -29,11 +32,11 @@ public class CommandHandler {
         Scanner scanner = new Scanner(System.in);
 
         // Output of a text for greeting
-        System.out.println("HighPerformance-Tool v1.0.3 by noukha2s, jkuste2s and yzayak2s");
+        System.out.println("HighPerformance-Tool v1.0.4 by noukha2s, jkuste2s and yzayak2s");
 
         while ( true ) {
             // Print the prompt
-            System.out.println("> ");
+            System.out.print("> ");
 
             // Next command
             strInput = scanner.nextLine();
