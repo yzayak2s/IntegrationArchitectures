@@ -4,41 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b12c0e3f-ca37-444a-bd38-00204c863106" name="Changes" comment="v1.0.5&#10;&#10;broken version">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b12c0e3f-ca37-444a-bd38-00204c863106" name="Changes" comment="v1.0.6&#10;&#10;newest version">
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/control/InputDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/control/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/control/ManagePersonal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/control/ManagePersonalImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/Command.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/CommandHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/Container.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/CreateCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/DeleteCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/ExitCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/HelpCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/hbrs/ia/model/command/ReadCommand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test/HighPerformanceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/control/InputDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/control/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/control/ManagePersonal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/control/ManagePersonalImpl.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/EvaluationRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/EvaluationRecord.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/SalesMan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/SalesMan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/CommandHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/Container.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/CreateCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/DeleteCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/ExitCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/HelpCommand.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/command/ReadCommand.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/exception/ContainerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/hbrs/ia/model/exception/ContainerException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/view/EvaluationRecordView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/hbrs/ia/view/EvaluationRecordView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/hbrs/ia/view/SalesManView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/hbrs/ia/view/SalesManView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/test/HighPerformanceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667493973643</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="v1.0.6&#10;&#10;newest version">
+      <created>1667496946892</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667496946892</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,6 +240,7 @@
     <MESSAGE value="v1.0.3&#10;&#10;created:&#10; - Command.java&#10; - CommandHandler.java&#10; - CreateCommand.java&#10; - ContainerException.java&#10; - EvaluationRecordView.java&#10; - SalesManView.java&#10; - ExitCommand.java&#10; - HelpCommand.java&#10; - ReadCommand.java&#10; - Main.java&#10;&#10;implemented:&#10; - &#10; &#10;added:&#10; - maven-compiler-plugin in pom.xml&#10; &#10;refactored:&#10; - some code-parts and variables in ManagePersonalImpl.java" />
     <MESSAGE value="v1.0.4&#10;&#10;created:&#10; - Container.java&#10; - DeleteCommand.java&#10; - InputDialog.java&#10; - log4j.properties&#10;&#10;implemented (most important):&#10; - startOutputSalesMen()-methods&#10; - startOutputEvaluationRecords()-methods&#10; - getSalesManList()-methods&#10; - getEvaluationRecordList()-methods&#10; - contains()-methods and&#10; - addSalesMan()-methods in Container.java&#10; &#10; - inputDialogCreateSalesMan()-methods&#10; - inputDialogRemoveSalesMan()-methods and&#10; - inputDialogCreateEvaluationRecord()-methods in InputDialog.java&#10; &#10;added:&#10; - configurations in log4j.properties (fixed Issue)&#10; - slf4j and log4j12 dependencies to pom.xml-file&#10; &#10;refactored:&#10; - some code-parts and variables in" />
     <MESSAGE value="v1.0.5&#10;&#10;broken version" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.0.5&#10;&#10;broken version" />
+    <MESSAGE value="v1.0.6&#10;&#10;newest version" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.6&#10;&#10;newest version" />
   </component>
 </project>
