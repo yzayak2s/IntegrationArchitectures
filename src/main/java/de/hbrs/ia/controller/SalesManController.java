@@ -22,21 +22,12 @@ public class SalesManController {
 
     @GetMapping("/firstname/{firstname}")
     public List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
-
-        try {
-            return salesManRepository.findSalesManByFirstname(firstname);
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
         return salesManRepository.findSalesManByFirstname(firstname);
     }
 
     @GetMapping("/{sid}")
     public SalesMan getSalesManById(@PathVariable int sid) {
-
             return salesManRepository.findSalesManById(sid);
-
     }
 
 

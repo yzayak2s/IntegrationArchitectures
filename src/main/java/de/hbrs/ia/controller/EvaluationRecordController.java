@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// TODO: 03.11.22 Implementation is left
 @RestController
 @RequestMapping("/evaluationrecord")
 public class EvaluationRecordController {
 
+    // TODO: 04.11.22 Extend endpoint with create/delete/update/read 
     @Autowired
     private EvaluationRecordRepository evaluationRecordRepository;
 
@@ -24,6 +24,12 @@ public class EvaluationRecordController {
     @GetMapping("/{sid}")
     public EvaluationRecord getEvaluationRecordBySalesManID(@PathVariable int sid) {
         return evaluationRecordRepository.findEvaluationRecordBySalesManID(sid);
+    }
+
+    @PutMapping(value = "/{goalID}")
+    public EvaluationRecord updateEvaluationRecord(@PathVariable int goalID, @RequestBody EvaluationRecord evaluationRecord) {
+        evaluationRecord.setGoalID(goalID);
+        return evaluationRecordRepository.save(evaluationRecord);
     }
 
     @PostMapping

@@ -14,4 +14,11 @@ public class OpenApiConfig {
                 .pathsToMatch("/salesmen/**")
                 .build();
     }
+    @Bean
+    public GroupedOpenApi evaluationrecordApi() {
+        return GroupedOpenApi.builder()
+                .group("springshop-evaluationrecord")
+                .pathsToMatch("/evaluationrecord/**")
+                .build();
+    }
 }

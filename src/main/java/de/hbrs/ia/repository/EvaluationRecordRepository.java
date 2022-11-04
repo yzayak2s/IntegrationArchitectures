@@ -11,4 +11,5 @@ public interface EvaluationRecordRepository extends MongoRepository<EvaluationRe
     public EvaluationRecord findEvaluationRecordByGoalID(int goalID);
     public List<EvaluationRecord> findEvaluationRecordsBySalesManID(int salesManID);
     public void deleteEvaluationRecordByGoalID(int salesManID);
+    public void getEvaluationRecordByGoalID(int goalID);
 }

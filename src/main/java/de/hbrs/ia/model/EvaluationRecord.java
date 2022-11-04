@@ -19,8 +19,6 @@ public class EvaluationRecord {
             int targetValue,
             int actualValue,
             int year,
-            // TODO: 24.10.22 Is the instance-variable 'salesManID' necessary for identifying
-            //  which EvaluationRecord belongs to a salesMan?
             int salesManID
     ) {
         this.goalID = goalID;
