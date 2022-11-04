@@ -50,11 +50,4 @@ public class SalesMan {
     public String toString() {
         return "SalesMan [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname +"]" ;
     }
- /*   public Document toDocument() {
-        org.bson.Document document = new Document();
-        document.append("firstname" , this.firstname );
-        document.append("lastname" , this.lastname );
-        document.append("id" , this.id);
-        return document;
-    }*/
 }
