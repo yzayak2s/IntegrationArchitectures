@@ -1,5 +1,15 @@
 package de.hbrs.ia.repository;
 
+import de.hbrs.ia.model.EvaluationRecord;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
+
 // TODO: 03.11.22 Implementation left
-public interface EvaluationRecordRepository {
+public interface EvaluationRecordRepository extends MongoRepository<EvaluationRecord, String> {
+    public EvaluationRecord findEvaluationRecordBySalesManID(int salesManID);
+    public EvaluationRecord findEvaluationRecordByGoalID(int goalID);
+    public List<EvaluationRecord> findEvaluationRecordsBySalesManID(int salesManID);
+    public void deleteEvaluationRecordByGoalID(int salesManID);
+    public void getEvaluationRecordByGoalID(int goalID);
 }

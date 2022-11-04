@@ -1,8 +1,11 @@
 package de.hbrs.ia.model;
 
-import org.bson.Document;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "evaluation_record")
 public class EvaluationRecord {
+    @Id
     private int goalID;
     private String goalDescription;
     private int targetValue;
@@ -16,8 +19,6 @@ public class EvaluationRecord {
             int targetValue,
             int actualValue,
             int year,
-            // TODO: 24.10.22 Is the instance-variable 'salesManID' necessary for identifying
-            //  which EvaluationRecord belongs to a salesMan?
             int salesManID
     ) {
         this.goalID = goalID;
@@ -76,14 +77,15 @@ public class EvaluationRecord {
         this.salesManID = salesManID;
     }
 
-    public Document toDocument() {
-        org.bson.Document document = new Document();
-                document.append("goalID", this.goalID);
-                document.append("goalDescription", this.goalDescription);
-                document.append("targetValue", this.targetValue);
-                document.append("actualValue", this.actualValue);
-                document.append("year", this.year);
-                document.append("salesManID", this.salesManID);
-        return document;
+    @Override
+    public String toString() {
+        return (
+                "EvaluationRecord [goalID=" + goalID + "," +
+                " goalDescription=" + goalDescription + "," +
+                " targetValue=" + targetValue + "," +
+                " actualValue=" + actualValue + "," +
+                " year=" + year + "," +
+                " salesManID=" + salesManID +"]"
+        ) ;
     }
 }

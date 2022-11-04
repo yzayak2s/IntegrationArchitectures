@@ -8,50 +8,43 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/salesmen")
 public class SalesManController {
 
     @Autowired
     private SalesManRepository salesManRepository;
 
-    @GetMapping(value = "/salesman")
+    @GetMapping
     public List<SalesMan> getAllsalesMan() {
 
         return salesManRepository.findAll();
     }
 
-    @GetMapping("/salesman/firstname/{firstname}")
-    List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
-
-        try {
-            return salesManRepository.findSalesManByFirstname(firstname);
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    @GetMapping("/firstname/{firstname}")
+    public List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
         return salesManRepository.findSalesManByFirstname(firstname);
     }
 
-    @GetMapping("/salesman/{sid}")
-    SalesMan getSalesManById(@PathVariable int sid) {
-
+    @GetMapping("/{sid}")
+    public SalesMan getSalesManById(@PathVariable int sid) {
             return salesManRepository.findSalesManById(sid);
-
     }
 
 
-    @PostMapping(value = "/salesman",  consumes = {"application/xml","application/json"})
-    public SalesMan addSalesMan(@RequestBody SalesMan salesMan) {
-            return salesManRepository.save(salesMan);
+    // TODO: 04.11.22 Validation if salesmanID already exists!
+    @PostMapping
+    public void addSalesMan(@RequestBody SalesMan salesMan) {
+            salesManRepository.save(salesMan);
     }
 
-    @PutMapping (value = "/salesman/update/{sid}")
-    public SalesMan updateMovie(@PathVariable int sid, @RequestBody SalesMan salesMan) {
+    @PutMapping ("/update/{sid}")
+    public SalesMan updateSalesMan(@PathVariable int sid, @RequestBody SalesMan salesMan) {
         salesMan.setId(sid);
         return salesManRepository.save(salesMan);
     }
 
-    @DeleteMapping(value = "/salesman/delete/{sid}")
-    public void deleteMovie(@PathVariable int sid) {
+    @DeleteMapping("/delete/{sid}")
+    public void deleteSalesMan(@PathVariable int sid) {
         salesManRepository.deleteSalesManById(sid);
     }
 
