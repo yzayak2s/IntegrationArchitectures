@@ -11,33 +11,31 @@ import java.util.List;
 @RequestMapping("/evaluationrecord")
 public class EvaluationRecordController {
 
-    // TODO: 04.11.22 Extend endpoint with create/delete/update/read 
     @Autowired
     private EvaluationRecordRepository evaluationRecordRepository;
 
-    // TODO: 04.11.22 Better solution?!
-    @GetMapping("/all/{sid}")
+    @GetMapping("/read/all/{sid}")
     public List<EvaluationRecord> getAllEvaluationRecordsBySalesManID(@PathVariable int sid) {
         return evaluationRecordRepository.findEvaluationRecordsBySalesManID(sid);
     }
 
-    @GetMapping("/{sid}")
+    @GetMapping("/read/{sid}")
     public EvaluationRecord getEvaluationRecordBySalesManID(@PathVariable int sid) {
         return evaluationRecordRepository.findEvaluationRecordBySalesManID(sid);
     }
 
-    @PutMapping(value = "/{goalID}")
+    @PutMapping(value = "/update/{goalID}")
     public EvaluationRecord updateEvaluationRecord(@PathVariable int goalID, @RequestBody EvaluationRecord evaluationRecord) {
         evaluationRecord.setGoalID(goalID);
         return evaluationRecordRepository.save(evaluationRecord);
     }
 
-    @PostMapping
+    @PostMapping(value = "/create")
     public void createEvaluationRecord(@RequestBody EvaluationRecord evaluationRecord) {
         evaluationRecordRepository.save(evaluationRecord);
     }
 
-    @DeleteMapping("/{goalID}")
+    @DeleteMapping("/delete/{goalID}")
     public void deleteEvaluationRecord(@PathVariable int goalID) {
         evaluationRecordRepository.deleteEvaluationRecordByGoalID(goalID);
     }
