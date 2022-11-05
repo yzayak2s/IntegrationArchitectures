@@ -16,12 +16,12 @@ public class EvaluationRecordController {
 
     @GetMapping("/read/all/{sid}")
     public List<EvaluationRecord> getAllEvaluationRecordsBySalesManID(@PathVariable int sid) {
-        return evaluationRecordRepository.findEvaluationRecordsBySalesManID(sid);
+        return evaluationRecordRepository.findEvaluationRecordsBySalesManIDOrderByYearDesc(sid);
     }
 
     @GetMapping("/read/{sid}")
-    public EvaluationRecord getEvaluationRecordBySalesManID(@PathVariable int sid) {
-        return evaluationRecordRepository.findEvaluationRecordBySalesManID(sid);
+    public EvaluationRecord getNewestEvaluationRecordBySalesManID(@PathVariable int sid) {
+        return evaluationRecordRepository.findTopEvaluationRecordBySalesManIDOrderByYearDesc(sid);
     }
 
     @PutMapping(value = "/update/{goalID}")
