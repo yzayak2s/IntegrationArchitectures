@@ -9,7 +9,7 @@ import java.util.List;
 public interface EvaluationRecordRepository extends MongoRepository<EvaluationRecord, String> {
     public EvaluationRecord findTopEvaluationRecordBySalesManIDOrderByYearDesc(int salesManID);
     public EvaluationRecord findEvaluationRecordByGoalID(int goalID);
-    public List<EvaluationRecord> findEvaluationRecordsBySalesManID(int salesManID);
+    public List<EvaluationRecord> findEvaluationRecordsBySalesManIDOrderByYearDesc(int salesManID);
     public void deleteEvaluationRecordByGoalID(int salesManID);
     public void getEvaluationRecordByGoalID(int goalID);
 }
