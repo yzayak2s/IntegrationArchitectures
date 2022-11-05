@@ -15,24 +15,21 @@ public class SalesManController {
     private SalesManRepository salesManRepository;
 
     @GetMapping
-    public List<SalesMan> getAllsalesMan() {
-
+    public List<SalesMan> getAllSalesMan() {
         return salesManRepository.findAll();
     }
 
-    @GetMapping("/firstname/{firstname}")
+    @GetMapping("/read/firstname/{firstname}")
     public List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
         return salesManRepository.findSalesManByFirstname(firstname);
     }
 
-    @GetMapping("/{sid}")
+    @GetMapping("/read/{sid}")
     public SalesMan getSalesManById(@PathVariable int sid) {
             return salesManRepository.findSalesManById(sid);
     }
 
-
-    // TODO: 04.11.22 Validation if salesmanID already exists!
-    @PostMapping
+    @PostMapping("/create/")
     public void addSalesMan(@RequestBody SalesMan salesMan) {
             salesManRepository.save(salesMan);
     }
