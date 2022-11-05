@@ -2,6 +2,11 @@ package de.hbrs.ia.controller;
 
 import de.hbrs.ia.model.SalesMan;
 import de.hbrs.ia.repository.SalesManRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -14,62 +19,73 @@ public class SalesManController {
     @Autowired
     private SalesManRepository salesManRepository;
 
-    /**
-     * Get a List of All salesman
-     * @return List of all Salesman
-     */
+    @Operation(
+            summary = "Get all salesman",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "List of Salesman", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SalesMan.class))),
+                    @ApiResponse(responseCode = "404", description = "No salesman was found", content = @Content(schema = @Schema(hidden = true)))
+            }
+    )
     @GetMapping("/read/all")
     public List<SalesMan> getAllSalesMan() {
         return salesManRepository.findAll();
     }
 
-    /**
-     * Search for all Salesman with the given first name
-     * @param firstname First name of Salesman to search for
-     * @return List of all Salesman with that first name
-     */
+    @Operation(
+            summary = "Search for all Salesman with the given first name",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "List of Salesman", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SalesMan.class))),
+                    @ApiResponse(responseCode = "404", description = "No matching salesman was found", content = @Content(schema = @Schema(hidden = true)))
+            }
+    )
     @GetMapping("/read/name/{firstname}")
-    public List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
+    public List<SalesMan> getSalesManByFirstname(@PathVariable @Parameter(description = "The first name to be fetched", required = true) String firstname) {
         return salesManRepository.findSalesManByFirstname(firstname);
     }
 
-    /**
-     * Search for a salesman with the given ID
-     * @param sid Salesman ID
-     * @return Salesman the ID belongs to
-     */
+    @Operation(
+            summary = "Search for a salesman with the given ID",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Salesman", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SalesMan.class))),
+                    @ApiResponse(responseCode = "404", description = "No matching salesman was found", content = @Content(schema = @Schema(hidden = true)))
+            }
+    )
     @GetMapping("/read/id/{sid}")
-    public SalesMan getSalesManById(@PathVariable int sid) {
+    public SalesMan getSalesManById(@PathVariable @Parameter(description = "Salesman ID",required = true) int sid) {
             return salesManRepository.findSalesManById(sid);
     }
 
-    /**
-     * Create a new salesman
-     * @param salesMan Salesman Object to be created
-     */
+    @Operation(
+            summary = "Create a new salesman",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Salesman was created")
+            }
+    )
     @PostMapping("/create/")
-    public void addSalesMan(@RequestBody SalesMan salesMan) {
+    public void addSalesMan(@RequestBody @Parameter(description = "Salesman object to be created",required = true) SalesMan salesMan) {
             salesManRepository.save(salesMan);
     }
 
-    /**
-     * Update a salesman with new data
-     * @param sid Salesman ID
-     * @param salesMan Updates salesman Object
-     * @return The updated salesman object
-     */
+    @Operation(
+            summary = "Update a salesman with new data",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Updated salesman Object")
+            }
+    )
     @PutMapping ("/update/{sid}")
-    public SalesMan updateSalesMan(@PathVariable int sid, @RequestBody SalesMan salesMan) {
+    public SalesMan updateSalesMan(@PathVariable @Parameter(description = "Salesman ID", required = true) int sid, @RequestBody SalesMan salesMan) {
         salesMan.setId(sid);
         return salesManRepository.save(salesMan);
     }
 
-    /**
-     * Delete a salesman by its ID
-     * @param sid Salesman ID
-     */
+    @Operation(
+            summary = "Delete a salesman by its ID",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Deleted salesman Object")
+            }
+    )
     @DeleteMapping("/delete/id/{sid}")
-    public void deleteSalesMan(@PathVariable int sid) {
+    public void deleteSalesMan(@PathVariable @Parameter(description = "Salesman ID", required = true) int sid) {
         salesManRepository.deleteSalesManById(sid);
     }
 

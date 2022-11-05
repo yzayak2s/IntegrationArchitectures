@@ -2,6 +2,11 @@ package de.hbrs.ia.controller;
 
 import de.hbrs.ia.model.EvaluationRecord;
 import de.hbrs.ia.repository.EvaluationRecordRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,53 +19,61 @@ public class EvaluationRecordController {
     @Autowired
     private EvaluationRecordRepository evaluationRecordRepository;
 
-    /**
-     * Get all Evaluations Records of a Salesman ordered By Year (newest -> oldest)
-     * @param sid Salesman ID
-     * @return List of all Evaluation records
-     */
+    @Operation(
+            summary = "Get all Evaluations Records of a Salesman ordered By Year (newest -> oldest)",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "List of evaluation records", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EvaluationRecord.class))),
+                    @ApiResponse(responseCode = "404", description = "No evaluation record was found", content = @Content(schema = @Schema(hidden = true)))
+            }
+    )
     @GetMapping("/read/all/{sid}")
-    public List<EvaluationRecord> getAllEvaluationRecordsBySalesManID(@PathVariable int sid) {
+    public List<EvaluationRecord> getAllEvaluationRecordsBySalesManID(@PathVariable @Parameter(description = "salesman ID", required = true) int sid) {
         return evaluationRecordRepository.findEvaluationRecordsBySalesManIDOrderByYearDesc(sid);
     }
 
-    /**
-     * Get the newest evaluation record af a salesman
-     * @param sid Salesman ID
-     * @return Newest Evaluation Records
-     */
+    @Operation(
+            summary = "Get the newest evaluation record of a salesman",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Newest evaluation record", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EvaluationRecord.class))),
+                    @ApiResponse(responseCode = "404", description = "No evaluation record was found", content = @Content(schema = @Schema(hidden = true)))
+            }
+    )
     @GetMapping("/read/{sid}")
-    public EvaluationRecord getNewestEvaluationRecordBySalesManID(@PathVariable int sid) {
+    public EvaluationRecord getNewestEvaluationRecordBySalesManID(@PathVariable @Parameter(description = "salesman ID", required = true) int sid) {
         return evaluationRecordRepository.findTopEvaluationRecordBySalesManIDOrderByYearDesc(sid);
     }
 
-    /**
-     * Update an evaluation record by its ID
-     * @param goalID Evaluation record ID
-     * @param evaluationRecord the updated evaluation record
-     * @return
-     */
+    @Operation(
+            summary = "Update an evaluation record by its ID",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Updated evaluation record", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EvaluationRecord.class)))
+            }
+    )
     @PutMapping(value = "/update/{goalID}")
-    public EvaluationRecord updateEvaluationRecord(@PathVariable int goalID, @RequestBody EvaluationRecord evaluationRecord) {
+    public EvaluationRecord updateEvaluationRecord(@PathVariable @Parameter(description = "Evaluation Record ID") int goalID, @RequestBody EvaluationRecord evaluationRecord) {
         evaluationRecord.setGoalID(goalID);
         return evaluationRecordRepository.save(evaluationRecord);
     }
 
-    /**
-     * Create a new evaluation record
-     * @param evaluationRecord Evaluation Record to be created
-     */
+    @Operation(
+            summary = "Create a new evaluation record",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Created evaluation record", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EvaluationRecord.class)))
+            }
+    )
     @PostMapping(value = "/create")
     public void createEvaluationRecord(@RequestBody EvaluationRecord evaluationRecord) {
         evaluationRecordRepository.save(evaluationRecord);
     }
 
-    /**
-     * Delete an evaluation record by its ID
-     * @param goalID Evaluation record ID
-     */
+    @Operation(
+            summary = "Delete an evaluation record by its ID",
+            responses = {
+                    @ApiResponse(responseCode = "200",description = "Deleted evaluation record")
+            }
+    )
     @DeleteMapping("/delete/{goalID}")
-    public void deleteEvaluationRecord(@PathVariable int goalID) {
+    public void deleteEvaluationRecord(@PathVariable @Parameter(description = "Evaluation record ID", required = true) int goalID) {
         evaluationRecordRepository.deleteEvaluationRecordByGoalID(goalID);
     }
 
