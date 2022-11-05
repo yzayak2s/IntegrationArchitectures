@@ -10,6 +10,6 @@ public interface EvaluationRecordRepository extends MongoRepository<EvaluationRe
     public EvaluationRecord findTopEvaluationRecordBySalesManIDOrderByYearDesc(int salesManID);
     public EvaluationRecord findEvaluationRecordByGoalID(int goalID);
     public List<EvaluationRecord> findEvaluationRecordsBySalesManIDOrderByYearDesc(int salesManID);
-    public void deleteEvaluationRecordByGoalID(int salesManID);
+    public void deleteEvaluationRecordByGoalID(int goalID);
     public void getEvaluationRecordByGoalID(int goalID);
 }
