@@ -14,17 +14,17 @@ public class SalesManController {
     @Autowired
     private SalesManRepository salesManRepository;
 
-    @GetMapping
+    @GetMapping("/read/all")
     public List<SalesMan> getAllSalesMan() {
         return salesManRepository.findAll();
     }
 
-    @GetMapping("/read/firstname/{firstname}")
+    @GetMapping("/read/name/{firstname}")
     public List<SalesMan> getSalesManByFirstname(@PathVariable String firstname) {
         return salesManRepository.findSalesManByFirstname(firstname);
     }
 
-    @GetMapping("/read/{sid}")
+    @GetMapping("/read/id/{sid}")
     public SalesMan getSalesManById(@PathVariable int sid) {
             return salesManRepository.findSalesManById(sid);
     }
@@ -40,7 +40,7 @@ public class SalesManController {
         return salesManRepository.save(salesMan);
     }
 
-    @DeleteMapping("/delete/{sid}")
+    @DeleteMapping("/delete/id/{sid}")
     public void deleteSalesMan(@PathVariable int sid) {
         salesManRepository.deleteSalesManById(sid);
     }
