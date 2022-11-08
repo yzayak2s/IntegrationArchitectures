@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "1cd92f6e-7250-4035-b94e-9a29f7876268",
+		"name": "OrangeHRM Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24254927"
+	},
+	"item": [
+		{
+			"name": "New Token Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJson = pm.response.json();",
+							"var bodyValue = responseJson.access_token;",
+							"pm.environment.set(\"accessToken\", bodyValue);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "api_oauth_id",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "oauth_secret",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "demouser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "*Safb02da42Demo$",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/oauth/issueToken",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"oauth",
+						"issueToken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "*Safb02da42Demo$",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "demouser",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/login",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Employees Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/employee/search",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"api",
+						"v1",
+						"employee",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Employee Request with ID 3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/employee/3",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"api",
+						"v1",
+						"employee",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One Employee Request with ID 3 and Bonussalary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/employee/3/bonussalary",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"api",
+						"v1",
+						"employee",
+						"3",
+						"bonussalary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Bonussalary for employee with ID 3 Request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "year",
+							"value": "2012",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "20000",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://sepp-hrm.inf.h-brs.de/symfony/web/index.php/api/v1/employee/3/bonussalary",
+					"protocol": "https",
+					"host": [
+						"sepp-hrm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"symfony",
+						"web",
+						"index.php",
+						"api",
+						"v1",
+						"employee",
+						"3",
+						"bonussalary"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

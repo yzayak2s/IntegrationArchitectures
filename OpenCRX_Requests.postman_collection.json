@@ -1,0 +1,95 @@
+{
+	"info": {
+		"_postman_id": "8e3e8c77-ce2a-4fc1-a3c0-60e6c390b220",
+		"name": "OpenCRX Requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24254927"
+	},
+	"item": [
+		{
+			"name": "All Customer Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "guest",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "guest",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-crm.inf.h-brs.de/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account",
+					"protocol": "https",
+					"host": [
+						"sepp-crm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"opencrx-rest-CRX",
+						"org.opencrx.kernel.account1",
+						"provider",
+						"CRX",
+						"segment",
+						"Standard",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Individual Customer Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "guest",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "guest",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sepp-crm.inf.h-brs.de/opencrx-rest-CRX/org.opencrx.kernel.account1/provider/CRX/segment/Standard/account/97NB4O91UQORTH2MA4T2TYJFL",
+					"protocol": "https",
+					"host": [
+						"sepp-crm",
+						"inf",
+						"h-brs",
+						"de"
+					],
+					"path": [
+						"opencrx-rest-CRX",
+						"org.opencrx.kernel.account1",
+						"provider",
+						"CRX",
+						"segment",
+						"Standard",
+						"account",
+						"97NB4O91UQORTH2MA4T2TYJFL"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
